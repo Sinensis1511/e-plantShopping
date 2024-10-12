@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../Development"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Coursera"
+	}
+}
