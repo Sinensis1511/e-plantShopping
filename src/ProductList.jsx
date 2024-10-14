@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import "./ProductList.css";
 import { addItem } from "./CartSlice";
 import { useDispatch } from "react-redux";
@@ -6,6 +8,7 @@ import { useDispatch } from "react-redux";
 function ProductList({onViewCart}) {
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
+
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
@@ -15,7 +18,11 @@ function ProductList({onViewCart}) {
     }));
   };
 
-  
+  // Accedi allo stato del carrello tramite Redux
+  const cart = useSelector((state) => state.cart.items);
+
+  // Calcola il totale degli articoli nel carrello
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const plantsArray = [
     {
@@ -288,6 +295,12 @@ function ProductList({onViewCart}) {
     setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
     setShowCart(false); // Hide the cart when navigating to About Us
   };
+
+  const handleContinueShopping = (e) => {
+    e.preventDefault();
+    setShowCart(false);
+  };
+
   return (
     <div>
       <div className="navbar" style={styleObj}>
@@ -337,6 +350,9 @@ function ProductList({onViewCart}) {
                   ></path>
                 </svg>
               </h1>
+              <p className="total-cart-quantity">
+                Items:{totalQuantity}
+              </p>
             </a>
           </div>
         </div>
@@ -378,8 +394,8 @@ function ProductList({onViewCart}) {
     </div>
   );
 
-}
 
+}
 
 
 export default ProductList;

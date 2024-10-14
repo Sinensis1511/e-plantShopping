@@ -172,6 +172,14 @@ body {
     font-size: 29px;
 
 }
+.total-cart-quantity{
+    font-size: 15px;
+    color: black;
+    background-color: #ffffff80;
+    border-radius: 100px;
+    text-align: center;
+    padding: 7px;
+}
 .plantname_heading{
    display: flex;
    align-items: center;
