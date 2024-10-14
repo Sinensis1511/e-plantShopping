@@ -6,24 +6,18 @@ import "./CartItem.css";
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
-  // Calculate total amount for all products in the cart
-  const calculateTotalAmount = () => {
-    return cart.reduce((total, item) => total + item.quantity * item.cost, 0);
-  };
+  const calculateTotalAmount = () =>
+    cart.reduce(
+      (total, item) =>
+        total + item.quantity * Number(item.cost.replace("$", "")),
+      0
+    );
 
-  // Calculate total cost based on quantity for an item
-  const calculateTotalCost = (item) => {
-    console.log("Calculating total cost " + item.quantity +" " + item.cost);
-    return item.quantity * Number(item.cost.replace("$", ""));
-  };
+  const calculateTotalCost = (item) =>
+    item.quantity * Number(item.cost.replace("$", ""));
 
-  const handleContinueShopping = (e) => {
-    e.onContinueShopping;
-  };
-
-  const handleCheckoutShopping = (e) => {
+  const handleCheckoutShopping = () => {
     alert("Functionality to be added for future reference");
   };
 
@@ -34,7 +28,7 @@ const CartItem = ({ onContinueShopping }) => {
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
       dispatch(updateQuantity({ ...item, quantity: item.quantity - 1 }));
-    } else if (item.quantity == 1) {
+    } else {
       dispatch(removeItem(item.name));
     }
   };
@@ -85,15 +79,8 @@ const CartItem = ({ onContinueShopping }) => {
           </div>
         ))}
       </div>
-      <div
-        style={{ marginTop: "20px", color: "black" }}
-        className="total_cart_amount"
-      ></div>
       <div className="continue_shopping_btn">
-        <button
-          className="get-started-button"
-          onClick={(e) => handleContinueShopping(e)}
-        >
+        <button className="get-started-button" onClick={onContinueShopping}>
           Continue Shopping
         </button>
         <br />
