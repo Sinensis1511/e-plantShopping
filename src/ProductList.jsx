@@ -277,7 +277,7 @@ function ProductList({onViewCart}) {
   };
   const styleObjUl = {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     width: "1100px",
   };
@@ -376,7 +376,7 @@ function ProductList({onViewCart}) {
                     <div className="product-title">{plant.name}</div>
                     {/*Similarly like the above plant.name show other details like description and cost*/}
                     <p>{plant.description}</p>
-                    <p>Price: {plant.cost}</p>
+                    <p className="prezzo">Price: {plant.cost}</p>
                     <button
                       className="product-button"
                       onClick={() => handleAddToCart(plant)}

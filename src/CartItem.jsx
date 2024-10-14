@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItem, updateQuantity } from "./CartSlice";
 import "./CartItem.css";
 
-const CartItem = ({ onContinueShopping}) => {
+const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
@@ -16,7 +16,6 @@ const CartItem = ({ onContinueShopping}) => {
       0
     );
   };
-
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
@@ -46,10 +45,6 @@ const CartItem = ({ onContinueShopping}) => {
 
   return (
     <div className="cart-container">
-   
-      <h2 style={{ color: "black" }}>
-        Total Cart Amount: ${calculateTotalAmount()}
-      </h2>
       <div>
         {cart.map((item) => (
           <div className="cart-item" key={item.name}>
@@ -87,6 +82,18 @@ const CartItem = ({ onContinueShopping}) => {
           </div>
         ))}
       </div>
+      <p
+        style={{
+          color: "white",
+          border: "2px solid blue",
+          padding: "18px",
+          borderRadius: "10px",
+          background: "#5749f5c4",
+          fontSize: "2em",
+        }}
+      >
+        Total Cart Amount: ${calculateTotalAmount()}
+      </p>
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={onContinueShopping}>
           Continue Shopping
@@ -102,8 +109,6 @@ const CartItem = ({ onContinueShopping}) => {
       </div>
     </div>
   );
-
-
 };
 
 export default CartItem;

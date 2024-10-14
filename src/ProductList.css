@@ -2,6 +2,7 @@
 body, h1, ul {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 /* Set a background color */
@@ -180,6 +181,12 @@ body {
     text-align: center;
     padding: 7px;
 }
+.prezzo{
+    color: rgb(14, 1, 155);
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 400;
+}
 .plantname_heading{
    display: flex;
    align-items: center;
@@ -217,12 +224,18 @@ body {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
   }
   
   .product-button:hover {
-    background-color: #45a049;
+    background-color: #29dd32;
   }
   
+  .product-button:active {
+    background-color: #023c04; /* Colore di sfondo quando è cliccato */
+    transform: translateY(2px); /* Effetto di abbassamento */
+}
   .product-button.added-to-cart {
     background-color: grey; /* Grey when product is added */
   }
